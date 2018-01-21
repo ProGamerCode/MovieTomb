@@ -13,17 +13,16 @@ public enum swipe_direction
 
 public class swipeCTRL : MonoBehaviour
 {
-    public Text debugTxt;
-    public Vector2 StartPosition;
-    public Vector2 EndPosition;
-    public Vector2 Direction;
-    public Vector2 Up = Vector2.up;
-    public float dot = 0;
-    public bool pressed = false;
+    Vector2 StartPosition;
+    Vector2 EndPosition;
+    Vector2 Direction;
+    Vector2 Up = Vector2.up;
+    float dot = 0;
+    bool pressed = false;
 
-    public float BeginTime = 0.0f;
-    public float timer = 0.0f;
-    public float delay = 3.0f;
+    float BeginTime = 0.0f;
+    float timer = 0.0f;
+    float delay = 3.0f;
 
     public swipe_direction GetSwipeDirection()
     {
@@ -99,15 +98,5 @@ public class swipeCTRL : MonoBehaviour
                     break;
             }
         }
-
-
-        swipe_direction swipeDir = GetSwipeDirection();
-        debugTxt.text = "Swip Direction: " + swipeDir.ToString() + "\n";
-
-        if (PressedDown())
-        {
-            debugTxt.text += "Pressed long enough";
-        }
-
     }
 }
