@@ -10,6 +10,10 @@ public class playAnim : MonoBehaviour {
     GameObject movieQuad;
     float xPoz = 43.59f;
     float yOrg = 17.64f;
+    float camZpoz = -23.01f;
+    float camYorg = 17.8f;
+    float camXorg = 43f;
+    Camera mainCam;
     // Use this for initialization
     void Start () {
         tCtrl = GameObject.Find("touchCTRL").GetComponent<swipeCTRL>();
@@ -17,6 +21,7 @@ public class playAnim : MonoBehaviour {
         movieQuad = GameObject.Find("MoviePiece").GetComponent<GameObject>();
 
         movieQuad.transform.position = new Vector3(xPoz, yOrg, -10.2f);
+        mainCam = Camera.main;
     }
 	
 	// Update is called once per frame
@@ -31,10 +36,12 @@ public class playAnim : MonoBehaviour {
 
         if(tCtrl.GetSwipeDirection()== swipe_direction.up) {
             movieQuad.transform.position = new Vector3(xPoz, 60f, -10.3f)*Time.deltaTime;
+            mainCam.transform.position = new Vector3(xPoz, 60f, camZpoz) * Time.deltaTime;
         }
         else if (tCtrl.GetSwipeDirection() == swipe_direction.down)
         {
             movieQuad.transform.position = new Vector3(xPoz, 60f, -10.3f) * Time.deltaTime;
+            mainCam.transform.position = new Vector3(xPoz, 60f, camZpoz) * Time.deltaTime;
         }
         else if (tCtrl.GetSwipeDirection() == swipe_direction.left)
         {
